@@ -24,16 +24,16 @@ PROMPT = """
         
         {
             "General review": {
-                "Orthography Revision": "content of orthography revision",
-                "Grammatical Revision": "content of grammatical revision",
-                "Structural Revision": "content of structural revision",
-                "Conceptual Revision": "content of conceptual revision",
-                "Debate Revision": "content of debate revision"
+                "Orthography Revision": [each word missapelled: correction],
+                "Grammatical Revision": [each sentence that can improve: the improved version],
+                "Structural Revision": "content of structural revision proposing an improved paragraph-by-paragraph structure",
+                "Conceptual Revision": "content of conceptual revision conducting a critical analysis of the entire blog. What are its weaknesses? What ideas can be debated or further explored? Are there debates already covered elsewhere?",
+                "Debate Revision": "content of debate revision Which sections require deeper exploration? what ideas can be expanded upon?"
             },
             "Titles": {
-                "title 1": "first suggested title",
-                "title 2": "second suggested title",
-                "title 3": "third suggested title"
+                "title 1": "first suggested effective title",
+                "title 2": "second suggested descriptive title",
+                "title 3": "third suggested funny title"
             },
             "SEO": ["keyword1", "keyword2", "keyword3", "keyword4", "keyword5"],
             "Blogs regarded": {
@@ -46,22 +46,24 @@ PROMPT = """
         """
         
 blog = """"
-        La creencia en un mundo cognocible, además de modelable matemáticamente trae innevitablemente como resultado la creencia de que en algún momento una ecuación podría eventualmente describir el funcionamiento de la mente por más compleja que esta sea.
+        El realismo científico es una corriente filosófica epistemológica que sostiene que el mundo es independiente de nuestras percepciones y que es cognoscible a través de la ciencia y la observación. Es además posible describirlo mediante leyes matemáticas y científicas. En este sentido, el universo existe objetivamente y podemos acceder a él mediante investigación científica, matemática y lógica.
 
-        Las redes neuronales, por su parte, poseen una capacidad teórica para aproximar cualquier función matemática dentro de lo que se ha llamado el Teorema de Aproximación Universal. Así, un circuito de redes con suficientes, neuronas, capas y nodos, puede aproximar cualquier función matemática por compleja que esta sea.
+        La creencia en un mundo cognoscible y modelable matemáticamente inevitablemente conduce a la idea de que es posible encontrar una ecuación que describa cualquier fenómenos por complejo que este sea, incluyendo por supuesto la mente.
 
-        Basado en lo anteior es preciso decir que, en tanto la mente es un sistema físico y no ideal o epifenomológico, es cognocible y se puede acceder a su información, modelándola mediante ecuaciones matemáticas. Y las redes neuronales podrían, con suficiente capacidad modelar dichas ecuaciones, es cuestión de tiempo (así sean miles de años) para que logremos decifrar la función (por más compleja que sea) que da origen a nuestra mente.
+        Las redes neuronales artificiales (ANN), por su parte, poseen la capacidad teórica de aproximar cualquier función matemática, lo cual se conoce como el Teorema de Aproximación Universal. Esto implica que un conjunto de redes con suficientes neuronas, capas y nodos puede aproximarse a cualquier función matemática, por compleja que esta sea.
 
-        No sólo eso, sino que si logramos modelar matemáticamente dicha ecuación, podriamos así mismo configurar un sistema computacional que la replique y entonces alcanzar el tan anhelado momento de replica de la ment humana. Si tenemos todas las variables, también podemos experimentar, describir y predecir.
+        En consecuencia, es preciso decir que, dado que la mente es un sistema físico y no puramente ideal o epifenoménico, es cognoscible y, en teoría, su funcionamiento puede representarse mediante ecuaciones matemáticas. Las redes neuronales, con su capacidad de aproximación, son herramientas plausibes para modelar estas ecuaciones. Es decir que, es una cuestión de tiempo, posiblemente años, décadas o siglos, pero descifrar la función que subyace a nuestra mente podría ser alcanzable.
 
-        Esta hipótesis, tan determinista como simplista, sufrirá no obstante de ciertos embates. Por ejemplo, al igual que con el demono laplaciano, se argumentará que no será posible conocer todas las variables debido a la complejidad subatómica. No obstante, el argumento ignora el nivel de funcionamiento del cerebro, que si bien puede observarse a nivel de partícular subatómicas, es más bien a nivel biológico que cobra relevancia (o al menos eso creemos) para el estudio de la mente.
+        Alcanzar la comprensión matemática de la mente abre consigo la posibilidad de configurar un sistema computacional que replique su funcionamiento. Teniendo un modelo con dichas características seremos capaces de describir, experimentar y predecir.
 
-        Otro argumento en contra puede ser el dilema de la leche de soya. Este dilema plantea que pese a que puedan conseguirse productos similares a la leche, basados por ejemplo en plantas, su resultado no es leche, sino un producto similar. La discusión puede extenderse hacia las preguntas, entonces ¿Qué es la leche? ¿Qué condiciones debe cumplir un producto para ser leche? en fin. 
+        Esta suposición determinista, aunque simplista, enfrenta ciertas críticas. Una de ellas es la misma que enfrenta el demonio laplaciano. sugiriendo que la complejidad del sistema haría imposible la recopilación y el cálculo de todos los datos relevante. Sin embargo, es que hay modelos que pese a su simpleza describen casi que a la perfección el fonémeno de estudio sin necesidad de ahondar necesariamente en todas las variables. Aún si fuera necesario, el argumento de la complejidad pierde fuerza en tanto tenemos algoritmos y procesamiento más capaz.
 
-        El argumento anterior es interesante, y yo mismo estoy parcialmente a favor, no obstante desvía el tema, porque no estamos diciendo que como resultado tendriamos una mente humana sino un modelo que se comporta perfectamente como una. Quienes además defienden esta postura, se enfrentan al dilema del Rigor de la Ciencia planteado por Borges.
+        Otra crítica comparable, es la que a mi me gusta llama, el dilema de la leche de soya. Un argumento que utilicé en una clase de filosofía en la universidad para ilustrar un punto. El argumento versa que, aunque llamemos leche de soya a la bebida que ya conocemos, en realidad no es leche. Y no lo es por su naturaleza misma. Aquí la contraparte, o los vegetarianos, pueden contraargumentar diciendo que si cambian todas sus propiedades al punto de ser una copia perfecta, es ahora leche. No obstante, no importan sus propiedades, su sabor, o su color, simplemente no es leche. La única forma de obtener leche de vaca es extrayéndola de una vaca.
 
-        Como científicos, es muy común que creamos conciente o inconcientemente en que el mundo es cognoscible además de modelable matemáticamente, y de seguro eso nos pone en aprietos cuando pensamos en si podemos modelar la mente mediante inteligencia artificial. Desde mi punto de vista, es posible conseguir un modelo de gran precisión y simulación al que llamaremos ‘mente artificial’, y será posible lograrlo incluso antes de entender perfectamente nuestro cerebro y de qué manera este produce la mente.
-        
+        Al igual que con la mente, el problema rapidamente dará un giro a la pregunta ¿Entonces qué es la leche? Pero la pregunta sólo busca desviar el problema, porque no estamos buscando recrear la mente humana sino modelarla. Aunque se logre un modelo que se comporte como la mente humana, podría ser un simulacro más que una reproducción auténtica. Así mismo, los defensores de esta postura se enfrentan al dilema del Rigor de la Ciencia planteado por Borges, que sugiere que una representación exacta puede perder su utilidad práctica al volverse tan extensa como la realidad misma.
+
+        En tanto científicos, solemos creer que el mundo es cognoscible y modelable matemáticamente. Esta perspectiva plantea desafíos al considerar la posibilidad de modelar la mente a través de la inteligencia artificial. Desde mi punto de vista, es plausible alcanzar un modelo altamente preciso y simulado, denominado 'mente artificial', incluso antes de comprender en su totalidad cómo nuestro cerebro genera lo que llamamos ‘la mente’.
+                
         """
 
 def proofreading(blog):
@@ -70,15 +72,20 @@ def proofreading(blog):
         {"role": "user", "content": f"Please read and improve this blog: {blog}"}
     ]
     
-    res = openai.ChatCompletion.create(
+    response = openai.chat.completions.create(
         model="gpt-3.5-turbo",
         messages=messages,
         
     )
 
-    return res["choices"][0]["message"]["content"]
+    print(response.choices[0].message.content)
 
 if __name__ == "__main__":
     load_dotenv()
     openai.api_key = os.getenv("OPENAI_API_KEY")
     proofreading(blog)
+    
+    
+## ESTA USANDO LA VIEJA VERSIÓN DE CHAT GPT, CAMBIA LA SINTAXIS
+## PRUEBA QUE FUNCIONE CON TU BLOG ACTUAL
+## AGREGA INTERACTIVIDAD

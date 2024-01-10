@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Proofreading Tool</title>
+</head>
+<body>
+
+  <div>
+    <label for="text-input">Enter text:</label>
+    <input type="text" id="text-input" placeholder="Type your text here...">
+    <button onclick="proofreadText()">Proofread</button>
+  </div>
+
+  <script>
+    function proofreadText() {
+      var text = document.getElementById("text-input").value;
+      // You can perform proofreading operations or actions here with the 'text' variable
+      // For demonstration, let's log the input text to the console
+      console.log("Input text:", text);
+    }
+  </script>
+
+</body>
+</html>
