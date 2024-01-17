@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Proofreading Result</title>
+</head>
+<body>
+
+  <h1>Proofreading Result</h1>
+
+  <h2>General Review</h2>
+  <ul>
+    {% for category, revisions in result['General review'].items() %}
+      <li><strong>{{ category }}</strong>
+        <ul>
+          {% if category == "Structural Revision" or category == "Conceptual Revision" %}
+            <li>{{ revisions }}</li>
+          {% else %}
+            {% for key, value in revisions.items() %}
+              <li>{{ key }}: {{ value }}</li>
+            {% endfor %}
+          {% endif %}
+        </ul>
+      </li>
+    {% endfor %}
+  </ul>
+
+  <h2>Titles</h2>
+  <ul>
+    {% for title, content in result['Titles'].items() %}
+      <li><strong>{{ title }}</strong>: {{ content }}</li>
+    {% endfor %}
+  </ul>
+
+  <h2>SEO Keywords</h2>
+  <ul>
+    {% for keyword in result['SEO'] %}
+      <li>{{ keyword }}</li>
+    {% endfor %}
+  </ul>
+
+  <h2>Blogs Regarded</h2>
+  <ul>
+    {% for blog, description in result['Blogs regarded'].items() %}
+      <li><strong>{{ blog }}</strong>: {{ description }}</li>
+    {% endfor %}
+  </ul>
+
+</body>
+</html>

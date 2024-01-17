@@ -3,6 +3,14 @@
 import openai
 from dotenv import load_dotenv
 import os
+from flask import Flask, render_template, request
+import json
+
+app = Flask(__name__)
+
+@app.route('/')
+def index():
+    return render_template('index.html')
 
 # Prompting
 
@@ -44,29 +52,10 @@ PROMPT = """
         }
         
         """
-        
-blog = """"
-        El realismo científico es una corriente filosófica epistemológica que sostiene que el mundo es independiente de nuestras percepciones y que es cognoscible a través de la ciencia y la observación. Es además posible describirlo mediante leyes matemáticas y científicas. En este sentido, el universo existe objetivamente y podemos acceder a él mediante investigación científica, matemática y lógica.
-
-        La creencia en un mundo cognoscible y modelable matemáticamente inevitablemente conduce a la idea de que es posible encontrar una ecuación que describa cualquier fenómenos por complejo que este sea, incluyendo por supuesto la mente.
-
-        Las redes neuronales artificiales (ANN), por su parte, poseen la capacidad teórica de aproximar cualquier función matemática, lo cual se conoce como el Teorema de Aproximación Universal. Esto implica que un conjunto de redes con suficientes neuronas, capas y nodos puede aproximarse a cualquier función matemática, por compleja que esta sea.
-
-        En consecuencia, es preciso decir que, dado que la mente es un sistema físico y no puramente ideal o epifenoménico, es cognoscible y, en teoría, su funcionamiento puede representarse mediante ecuaciones matemáticas. Las redes neuronales, con su capacidad de aproximación, son herramientas plausibes para modelar estas ecuaciones. Es decir que, es una cuestión de tiempo, posiblemente años, décadas o siglos, pero descifrar la función que subyace a nuestra mente podría ser alcanzable.
-
-        Alcanzar la comprensión matemática de la mente abre consigo la posibilidad de configurar un sistema computacional que replique su funcionamiento. Teniendo un modelo con dichas características seremos capaces de describir, experimentar y predecir.
-
-        Esta suposición determinista, aunque simplista, enfrenta ciertas críticas. Una de ellas es la misma que enfrenta el demonio laplaciano. sugiriendo que la complejidad del sistema haría imposible la recopilación y el cálculo de todos los datos relevante. Sin embargo, es que hay modelos que pese a su simpleza describen casi que a la perfección el fonémeno de estudio sin necesidad de ahondar necesariamente en todas las variables. Aún si fuera necesario, el argumento de la complejidad pierde fuerza en tanto tenemos algoritmos y procesamiento más capaz.
-
-        Otra crítica comparable, es la que a mi me gusta llama, el dilema de la leche de soya. Un argumento que utilicé en una clase de filosofía en la universidad para ilustrar un punto. El argumento versa que, aunque llamemos leche de soya a la bebida que ya conocemos, en realidad no es leche. Y no lo es por su naturaleza misma. Aquí la contraparte, o los vegetarianos, pueden contraargumentar diciendo que si cambian todas sus propiedades al punto de ser una copia perfecta, es ahora leche. No obstante, no importan sus propiedades, su sabor, o su color, simplemente no es leche. La única forma de obtener leche de vaca es extrayéndola de una vaca.
-
-        Al igual que con la mente, el problema rapidamente dará un giro a la pregunta ¿Entonces qué es la leche? Pero la pregunta sólo busca desviar el problema, porque no estamos buscando recrear la mente humana sino modelarla. Aunque se logre un modelo que se comporte como la mente humana, podría ser un simulacro más que una reproducción auténtica. Así mismo, los defensores de esta postura se enfrentan al dilema del Rigor de la Ciencia planteado por Borges, que sugiere que una representación exacta puede perder su utilidad práctica al volverse tan extensa como la realidad misma.
-
-        En tanto científicos, solemos creer que el mundo es cognoscible y modelable matemáticamente. Esta perspectiva plantea desafíos al considerar la posibilidad de modelar la mente a través de la inteligencia artificial. Desde mi punto de vista, es plausible alcanzar un modelo altamente preciso y simulado, denominado 'mente artificial', incluso antes de comprender en su totalidad cómo nuestro cerebro genera lo que llamamos ‘la mente’.
-                
-        """
 
 def proofreading(blog):
+    load_dotenv()
+    openai.api_key = os.getenv("OPENAI_API_KEY")
     messages = [
         {"role":"system", "content":PROMPT}, 
         {"role": "user", "content": f"Please read and improve this blog: {blog}"}
@@ -77,15 +66,19 @@ def proofreading(blog):
         messages=messages,
         
     )
+    result = json.loads(response.choices[0].message.content)
+    return result
 
-    print(response.choices[0].message.content)
+@app.route('/proofread', methods=['POST'])
+def review():
+    blog = request.form['text'] # Add after
+    result = proofreading(blog)
+    print(result)
+    
+    return render_template('result.html', result=result)
 
 if __name__ == "__main__":
-    load_dotenv()
-    openai.api_key = os.getenv("OPENAI_API_KEY")
-    proofreading(blog)
+    app.run(debug=True)    
+
     
     
-## ESTA USANDO LA VIEJA VERSIÓN DE CHAT GPT, CAMBIA LA SINTAXIS
-## PRUEBA QUE FUNCIONE CON TU BLOG ACTUAL
-## AGREGA INTERACTIVIDAD
