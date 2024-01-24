@@ -32,8 +32,8 @@ PROMPT = """
         
         {
             "General review": {
-                "Orthography Revision": [each word missapelled: correction],
-                "Grammatical Revision": [each sentence that can improve: the improved version],
+                "Orthography Revision": ["each word missapelled: correction"],
+                "Grammatical Revision": ["each sentence that can improve: the improved version"],
                 "Structural Revision": "content of structural revision proposing an improved paragraph-by-paragraph structure",
                 "Conceptual Revision": "content of conceptual revision conducting a critical analysis of the entire blog. What are its weaknesses? What ideas can be debated or further explored? Are there debates already covered elsewhere?",
                 "Debate Revision": "content of debate revision Which sections require deeper exploration? what ideas can be expanded upon?"
@@ -62,12 +62,20 @@ def proofreading(blog):
     ]
     
     response = openai.chat.completions.create(
-        model="gpt-3.5-turbo",
+        model="gpt-4",
         messages=messages,
         
     )
-    result = json.loads(response.choices[0].message.content)
-    return result
+    
+
+    try:
+        result = json.loads(response.choices[0].message.content)
+        return result
+    except json.JSONDecodeError as e:
+        print("JSON decode error:", e)
+        print("Response content:", response.choices[0].message.content)
+        # Handle the error, maybe return an error message or default value
+        return {"error": "Invalid JSON response from API."}
 
 @app.route('/proofread', methods=['POST'])
 def review():
