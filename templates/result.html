@@ -3,16 +3,35 @@
 <head>
   <title>Proofreading Result</title>
 </head>
+<title>Proofreading Result</title>
+  <style>
+    .container {
+      display: flex;
+    }
+    .result-section, .edit-section {
+      flex: 1;
+      padding: 10px;
+      box-sizing: border-box;
+    }
+    .edit-section textarea {
+      width: 100%;
+      height: 400px; /* Adjust height as needed */
+    }
+  </style>
+</head>
 <body>
 
   <h1>Proofreading Result</h1>
+
+  <div class="container">
+    <div class="result-section">
 
   <h2>General Review</h2>
   <ul>
     {% for category, revisions in result['General review'].items() %}
       <li><strong>{{ category }}</strong>
         <ul>
-          {% if category == "Structural Revision" or category == "Conceptual Revision" %}
+          {% if category == "Structural Revision" or category == "Conceptual Revision" or category == "Debate Revision" %}
             <li>{{ revisions }}</li>
           {% else %}
             {% for value in revisions %}
@@ -44,6 +63,14 @@
       <li><strong>{{ blog }}</strong>: {{ description }}</li>
     {% endfor %}
   </ul>
+  </div>
+
+  <div class="edit-section">
+    <h2>Edit Your Text</h2>
+    <textarea id="text-edit" name="text-edit">{{ original_text }}</textarea>
+    <!-- Add a button if needed to re-submit the edited text -->
+  </div>
+  </div>
 
 </body>
 </html>

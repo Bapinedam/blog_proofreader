@@ -79,11 +79,18 @@ def proofreading(blog):
 
 @app.route('/proofread', methods=['POST'])
 def review():
-    blog = request.form['text'] # Add after
+    blog = request.form['text'] 
     result = proofreading(blog)
     print(result)
     
-    return render_template('result.html', result=result)
+    return render_template('result.html', result=result, original_text=blog)
+
+@app.route('/reproofread', methods=['POST'])
+def re_review():
+    edited_blog = request.form['text-edit']
+    result = proofreading(edited_blog)
+    return render_template('result.html', result=result, original_text=edited_blog)
+
 
 if __name__ == "__main__":
     app.run(debug=True)    
